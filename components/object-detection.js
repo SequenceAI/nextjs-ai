@@ -8,7 +8,7 @@ import {renderPredictions} from "@/utils/render-predictions";
 
 let detectInterval;
 
-const ObjectDetection = () => {
+const ObjectDetection = ({ overlayStates }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const webcamRef = useRef(null);
@@ -40,7 +40,7 @@ const ObjectDetection = () => {
         0.6
       );
 
-      //   console.log(detectedObjects);
+      //console.log(detectedObjects);
 
       const context = canvasRef.current.getContext("2d");
       renderPredictions(detectedObjects, context);
@@ -82,6 +82,35 @@ const ObjectDetection = () => {
             ref={canvasRef}
             className="absolute top-0 left-0 z-99999 w-full lg:h-[720px]"
           />
+          {/* Conditional Rendering of Overlay Canvases */}
+          {overlayStates.includes("model1") && (
+            <canvas
+              key="model1"
+              className="absolute top-0 left-0 z-999 w-full lg:h-[720px]"
+              style={{ border: "2px solid red" }}
+            />
+          )}
+          {overlayStates.includes("model2") && (
+            <canvas
+              key="model2"
+              className="absolute top-0 left-0 z-999 w-full lg:h-[720px]"
+              style={{ border: "2px solid green" }}
+            />
+          )}
+          {overlayStates.includes("model3") && (
+            <canvas
+              key="model3"
+              className="absolute top-0 left-0 z-999 w-full lg:h-[720px]"
+              style={{ border: "2px solid blue" }}
+            />
+          )}
+          {overlayStates.includes("model4") && (
+            <canvas
+              key="model4"
+              className="absolute top-0 left-0 z-999 w-full lg:h-[720px]"
+              style={{ border: "2px solid yellow" }}
+            />
+          )}
         </div>
       )}
     </div>

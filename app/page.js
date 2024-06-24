@@ -1,4 +1,6 @@
 import ObjectDetection from "@/components/object-detection";
+import MovinetDetection from "@/components/movienet";
+
 
 export default function Home() {
   return (
@@ -7,6 +9,7 @@ export default function Home() {
         Thief Detection Alarm
       </h1>
       <ObjectDetection />
+        {/*<MovinetDetection/>*/}
     </main>
   );
 }
